@@ -33,8 +33,17 @@ const insertuser = async(req,res) => {
     return res.status(204).json();
   };
 
+  const unidget = async (req,res) => {
+  
+    const {nome} = req.params;
+    
+    let item = await userModel.unidget(nome);
+    
+    return res.status(200).json(item);
+  };
+
   module.exports = {
-    insertuser, deleteuser, Updateduser, userGetAll
+    insertuser, deleteuser, Updateduser, userGetAll, unidget
   }
   
 

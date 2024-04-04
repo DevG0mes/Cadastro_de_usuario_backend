@@ -24,11 +24,18 @@ const Updateduser = async (id, usuario) => {
   return updatedUser.rows;
 };
 
+const unidget = async (nome) => {
+  const usuario = await connection.query('SELECT id,nome,notebook FROM inventario where nome ilike $1 limit 1', [nome]);
+  console.log(usuario.rows)
+  return usuario.rows[0];
+  
+}; 
+
 
 
 
 
 module.exports = {
-   userGet, insertuser, deleteuser, Updateduser
+   userGet, insertuser, deleteuser, Updateduser, unidget
   }
   
