@@ -25,10 +25,9 @@ const Updateduser = async (id, usuario) => {
 };
 
 const unidget = async (nome) => {
-  const usuario = await connection.query('SELECT id,nome,notebook FROM inventario where nome ilike $1 limit 1', [nome]);
-  console.log(usuario.rows)
+  const usuario = await connection.query('SELECT id, nome, notebook FROM inventario WHERE nome ILIKE $1 limit 1', ['%' + nome + '%']);
+  console.log(usuario.rows);
   return usuario.rows[0];
-  
 }; 
 
 
